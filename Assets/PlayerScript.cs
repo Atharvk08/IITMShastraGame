@@ -10,12 +10,15 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float cameraMoveSpeed;
 
     [SerializeField] private GameObject torch;
+    private Direction torchDirection;
+
     public GameObject camera;
     private Vector3 cameraOffset;
+
     enum Direction { centre, up,right ,down ,left};
     private Vector3 playerDirection;
 
-    Direction torchDirection;
+    
     private bool moveToPoint = false;
     private Vector3 endPosition;
 
@@ -34,7 +37,7 @@ public class PlayerScript : MonoBehaviour
         camera = GameObject.Find("Main Camera");
         cameraOffset.z = camera.transform.position.z;
 
-        Debug.Log("wall" + wallTileMap.size);
+        Debug.Log("torch direction : " + torchDirection);
     }
 
     void FixedUpdate()
@@ -79,8 +82,17 @@ public class PlayerScript : MonoBehaviour
                 playerDirection = new Vector3(endPosition.x - distanceToMove, endPosition.y, endPosition.z);
                 if (canMove(playerDirection))
                 {
-                    endPosition = playerDirection;
-                    moveToPoint = true;
+                    if (torchDirection != Direction.left)
+                    {
+                        torchDirection = Direction.left;
+                        torch.transform.localPosition = new Vector3(-distanceToMove,0f,0f);
+                        Debug.Log("move torch" + torchDirection);
+                    }
+                    else
+                    {
+                        endPosition = playerDirection;
+                        moveToPoint = true;
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.D)) //Right
@@ -88,8 +100,16 @@ public class PlayerScript : MonoBehaviour
                 playerDirection = new Vector3(endPosition.x + distanceToMove, endPosition.y, endPosition.z);
                 if (canMove(playerDirection))
                 {
-                    endPosition = playerDirection;
-                    moveToPoint = true;
+                    if (torchDirection != Direction.right)
+                    {
+                        torchDirection = Direction.right;
+                        torch.transform.localPosition = new Vector3(distanceToMove, 0f, 0f);
+                    }
+                    else
+                    {
+                        endPosition = playerDirection;
+                        moveToPoint = true;
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.W))//Up
@@ -97,8 +117,17 @@ public class PlayerScript : MonoBehaviour
                 playerDirection = new Vector3(endPosition.x, endPosition.y + distanceToMove, endPosition.z);
                 if (canMove(playerDirection))
                 {
-                    endPosition = playerDirection;
-                    moveToPoint = true;
+                    if (torchDirection != Direction.up)
+                    {
+                        torchDirection = Direction.up;
+                        torch.transform.localPosition = new Vector3(0f,distanceToMove,  0f);
+                        Debug.Log("move torch" + torchDirection);
+                    }
+                    else
+                    {
+                        endPosition = playerDirection;
+                        moveToPoint = true;
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.S)) //Down
@@ -106,8 +135,17 @@ public class PlayerScript : MonoBehaviour
                 playerDirection = new Vector3(endPosition.x, endPosition.y - distanceToMove, endPosition.z);
                 if (canMove(playerDirection))
                 {
-                    endPosition = playerDirection;
-                    moveToPoint = true;
+                    if (torchDirection != Direction.down)
+                    {
+                        torchDirection = Direction.down;
+                        torch.transform.localPosition = new Vector3(0f, -distanceToMove, 0f);
+                        Debug.Log("move torch" + torchDirection);
+                    }
+                    else
+                    {
+                        endPosition = playerDirection;
+                        moveToPoint = true;
+                    }
                 }
             }
 
