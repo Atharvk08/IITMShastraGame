@@ -1806,7 +1806,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 1572018460}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &813870626
 MonoBehaviour:
@@ -1877,8 +1877,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
-  m_Father: {fileID: 1884506174}
-  m_RootOrder: 1
+  m_Father: {fileID: 1572018460}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1134572397
 MonoBehaviour:
@@ -2148,9 +2148,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1134572396}
   - {fileID: 813870625}
   m_Father: {fileID: 1884506174}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1884506173
 GameObject:
@@ -2183,7 +2184,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1481135840}
-  - {fileID: 1134572396}
   - {fileID: 1572018460}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -2204,6 +2204,7 @@ MonoBehaviour:
   moveSpeed: 20
   cameraMoveSpeed: 20
   torch: {fileID: 1572018459}
+  torchLight: {fileID: 813870624}
   camera: {fileID: 519420028}
   groundTimeMap: {fileID: 579873615}
   wallTileMap: {fileID: 1960304508}

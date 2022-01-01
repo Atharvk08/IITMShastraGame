@@ -11,6 +11,8 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private GameObject torch;
     private Direction torchDirection;
+    [SerializeField]private GameObject torchLight;
+    private bool torchEnabled;
 
     public GameObject camera;
     private Vector3 cameraOffset;
@@ -38,6 +40,7 @@ public class PlayerScript : MonoBehaviour
         cameraOffset.z = camera.transform.position.z;
 
         Debug.Log("torch direction : " + torchDirection);
+        torchEnabled = true;
     }
 
     void FixedUpdate()
@@ -55,6 +58,22 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         playerMove();
+        torchActive();
+    }
+    
+    private void torchActive()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            torch.SetActive(!torch.activeSelf);
+            torchEnabled = false;
+        }
+        if (!torchEnabled)
+        {
+            torchDirection = Direction.centre;
+            torchEnabled = true;
+            torchLight.transform.localPosition = new Vector3(0f, 0f, 0f);
+        }
     }
 
     private bool canMove(Vector3 direction)
@@ -82,12 +101,11 @@ public class PlayerScript : MonoBehaviour
                 playerDirection = new Vector3(endPosition.x - distanceToMove, endPosition.y, endPosition.z);
                 if (canMove(playerDirection))
                 {
-                    if (torchDirection != Direction.left)
+                    if (torchDirection != Direction.left)//torch not pointing in left direction
                     {
                         torchDirection = Direction.left;
-                        torch.transform.localPosition = new Vector3(-distanceToMove,0f,0f);
-                        Debug.Log("move torch" + torchDirection);
-                    }
+                        torchLight.transform.localPosition = new Vector3(-distanceToMove,0f,0f);
+                    }//player moving in left direction
                     else
                     {
                         endPosition = playerDirection;
@@ -100,12 +118,12 @@ public class PlayerScript : MonoBehaviour
                 playerDirection = new Vector3(endPosition.x + distanceToMove, endPosition.y, endPosition.z);
                 if (canMove(playerDirection))
                 {
-                    if (torchDirection != Direction.right)
+                    if (torchDirection != Direction.right)//torch not pointing in right direction
                     {
                         torchDirection = Direction.right;
-                        torch.transform.localPosition = new Vector3(distanceToMove, 0f, 0f);
+                        torchLight.transform.localPosition = new Vector3(distanceToMove, 0f, 0f);
                     }
-                    else
+                    else//player moving in rigth direction
                     {
                         endPosition = playerDirection;
                         moveToPoint = true;
@@ -120,7 +138,7 @@ public class PlayerScript : MonoBehaviour
                     if (torchDirection != Direction.up)
                     {
                         torchDirection = Direction.up;
-                        torch.transform.localPosition = new Vector3(0f,distanceToMove,  0f);
+                        torchLight.transform.localPosition = new Vector3(0f,distanceToMove,  0f);
                         Debug.Log("move torch" + torchDirection);
                     }
                     else
@@ -138,7 +156,7 @@ public class PlayerScript : MonoBehaviour
                     if (torchDirection != Direction.down)
                     {
                         torchDirection = Direction.down;
-                        torch.transform.localPosition = new Vector3(0f, -distanceToMove, 0f);
+                        torchLight.transform.localPosition = new Vector3(0f, -distanceToMove, 0f);
                         Debug.Log("move torch" + torchDirection);
                     }
                     else
