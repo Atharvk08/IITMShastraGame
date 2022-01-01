@@ -6,10 +6,12 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private float distanceToMove;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float cameraMoveSpeed;
     public Collider2D moveUp, moveDown, moveRight, moveLeft,wall;
 
     [SerializeField] private GameObject torch;
-    [SerializeField] private GameObject camera;
+    public GameObject camera;
+    private Vector3 cameraOffset;
     enum Direction { centre, up,right ,down ,left};
 
     Direction torchDirection;
@@ -23,17 +25,22 @@ public class PlayerScript : MonoBehaviour
         torchDirection = Direction.centre;
 
         camera = GameObject.Find("Main Camera");
+        cameraOffset.z = camera.transform.position.z;
     }
 
     void FixedUpdate()
     {
         if (moveToPoint)
         {
+
             transform.position = Vector3.MoveTowards(transform.position, endPosition, moveSpeed * Time.deltaTime);
         }
     }
 
-    
+    private void LateUpdate()
+    {
+        camera.transform.position = Vector3.MoveTowards(camera.transform.position, endPosition+cameraOffset, cameraMoveSpeed * Time.deltaTime);
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A) && !moveLeft.IsTouching(wall)) //Left
