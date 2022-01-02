@@ -14,6 +14,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]private GameObject torchLight;
     private bool torchEnabled;
 
+    public bool getTorchEnabled() { return torchEnabled; }
+    public void setTorchEnabled(bool flag) { torchEnabled=flag; }
+
     public GameObject camera;
     private Vector3 cameraOffset;
 
@@ -43,10 +46,6 @@ public class PlayerScript : MonoBehaviour
         torchEnabled = true;
     }
 
-    void FixedUpdate()
-    {
-        Move();
-    }
 
     private void LateUpdate()
     {
@@ -55,12 +54,16 @@ public class PlayerScript : MonoBehaviour
             camera.transform.position = Vector3.MoveTowards(camera.transform.position, endPosition + cameraOffset, cameraMoveSpeed * Time.deltaTime);
         }
     }
-    void Update()
+    void FixedUpdate()
+    {
+        Move();
+    }
+    private void Update()
     {
         playerMove();
         torchActive();
     }
-    
+
     private void torchActive()
     {
         if (Input.GetKeyDown(KeyCode.Space))
