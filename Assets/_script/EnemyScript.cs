@@ -6,7 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
     AIPath aipath;
     [SerializeField] private GameObject enemyGFX;
-
+    [SerializeField]private PlayerScript playerScript;
     private bool targetSpotted;
     private bool canEnemyMove;
 
@@ -17,6 +17,10 @@ public class EnemyScript : MonoBehaviour
     private void Start()
     {
         aipath = GetComponent<AIPath>();
+        targetSpotted = false;
+        canEnemyMove = false;
+
+        aipath.canMove = false;
     }
     void FixedUpdate()
     {
@@ -33,17 +37,30 @@ public class EnemyScript : MonoBehaviour
         {
             transform.localScale = new Vector3(1f, -1f, 1f);
         }
-
     }
+
     private void Update()
     {
         EnemyStop();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerTorchLight"))
+        {
+            Debug.Log("PlayerDetected");
+            targetSpotted = true;
+            aipath.canMove = true;
+            
+        }
+    }
     void EnemyStop()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canEnemyMove)
+        if (targetSpotted)
         {
-            aipath.canMove = !aipath.canMove;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                aipath.canMove = playerScript.getTorchEnabled();
+            }
         }
 
     }

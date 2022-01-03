@@ -63,19 +63,26 @@ public class PlayerScript : MonoBehaviour
         playerMove();
         torchActive();
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("enemy spotted");
+        }
+    }
     private void torchActive()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             torch.SetActive(!torch.activeSelf);
-            torchEnabled = false;
-        }
-        if (!torchEnabled)
-        {
-            torchDirection = Direction.centre;
-            torchEnabled = true;
-            torchLight.transform.localPosition = new Vector3(0f, 0f, 0f);
+            torchEnabled = torch.activeSelf;
+            Debug.Log("troch active status:" + torchEnabled);
+
+            if (torchEnabled)
+            {
+                torchDirection = Direction.centre;
+                torchLight.transform.localPosition = new Vector3(0f, 0f, 0f);
+            }
         }
     }
 
@@ -142,7 +149,6 @@ public class PlayerScript : MonoBehaviour
                     {
                         torchDirection = Direction.up;
                         torchLight.transform.localPosition = new Vector3(0f,distanceToMove,  0f);
-                        Debug.Log("move torch" + torchDirection);
                     }
                     else
                     {
@@ -160,7 +166,6 @@ public class PlayerScript : MonoBehaviour
                     {
                         torchDirection = Direction.down;
                         torchLight.transform.localPosition = new Vector3(0f, -distanceToMove, 0f);
-                        Debug.Log("move torch" + torchDirection);
                     }
                     else
                     {
