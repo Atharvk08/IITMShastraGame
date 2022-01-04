@@ -101,7 +101,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 4
   pickNextWaypointDist: 1
-  endReachedDistance: 3.974
+  endReachedDistance: 4
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -130,7 +130,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f8ac5cd55f1b34a8f4838854ef7ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyGFX: {fileID: 4948889149922462762}
   playerScript: {fileID: 0}
+  canMove: 0
 --- !u!1 &4948889149922462762
 GameObject:
   m_ObjectHideFlags: 0

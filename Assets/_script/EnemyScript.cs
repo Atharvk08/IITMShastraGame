@@ -5,35 +5,59 @@ using Pathfinding;
 public class EnemyScript : MonoBehaviour
 {
     AIPath aipath;
-    [SerializeField] private GameObject enemyGFX;
     [SerializeField]private PlayerScript playerScript;
-    private bool targetSpotted;
-    private bool canEnemyMove;
-
-    public bool getTargetSpotted() { return targetSpotted; }
-    public bool getCanEnemyMove() { return canEnemyMove; }
-    public void setCanEnemyMove(bool flag) { canEnemyMove = flag; }
-
+    private bool playerDetected;
+    [SerializeField] private bool canMove;
     private void Start()
     {
         aipath = GetComponent<AIPath>();
-        targetSpotted = false;
-        canEnemyMove = false;
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
 
         aipath.canMove = false;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerTorchLight"))
+        {
+            playerDetected = true;
+            Debug.Log("target spotted");
+        }
+        if (collision.CompareTag("Spikes"))
+        {
+            Destroy(gameObject);
+            Debug.Log("enemy detsoref");
+        }
+    }
     void FixedUpdate()
+    {
+        Flip();
+        canMove = playerScript.getTorchEnabled() && playerDetected;
+        if (canMove)
+        {
+            aipath.canMove = true;
+            Debug.Log(canMove);
+        }
+        else
+        {
+            aipath.canMove = false;
+        }
+    }
+
+    void Flip()
     {
         if (aipath.desiredVelocity.x >= 0.01f)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
-        }else if (aipath.desiredVelocity.x <= 0.01f)
+        }
+        else if (aipath.desiredVelocity.x <= 0.01f)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
-        }else if (aipath.desiredVelocity.y >= 0.01f)
+        }
+        else if (aipath.desiredVelocity.y >= 0.01f)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
-        }else if(aipath.desiredVelocity.y<=0.01f)
+        }
+        else if (aipath.desiredVelocity.y <= 0.01f)
         {
             transform.localScale = new Vector3(1f, -1f, 1f);
         }
@@ -41,27 +65,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
-        EnemyStop();
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("PlayerTorchLight"))
-        {
-            Debug.Log("PlayerDetected");
-            targetSpotted = true;
-            aipath.canMove = true;
-            
-        }
-    }
-    void EnemyStop()
-    {
-        if (targetSpotted)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                aipath.canMove = playerScript.getTorchEnabled();
-            }
-        }
 
     }
+    
 }

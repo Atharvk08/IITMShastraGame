@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
 
-    Vector2 direction;
+    Vector3 direction;
     private void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (seeker.IsDone())
         {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
+            seeker.StartPath(transform.localPosition, target.position, OnPathComplete);
             Debug.Log("Path updated");
         }
     }
@@ -81,10 +81,15 @@ public class EnemyAI : MonoBehaviour
 
     void MoveEnemy()
     {
-        direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-        rb.AddForce(force);
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        direction = (path.vectorPath[currentWaypoint] - transform.localPosition).normalized;
+        //Vector2 force = direction * speed * Time.deltaTime;
+        //rb.AddForce(force);
+
+        Vector3 moveObj = transform.localPosition + direction * speed*Time.deltaTime;
+        //Vector2.MoveTowards((Vector2)transform.position, (Vector2)path.vectorPath[currentWaypoint], Time.deltaTime * speed);
+        Debug.Log("nectwp: " + (Vector2)path.vectorPath[currentWaypoint]);
+        transform.localPosition =moveObj;
+        float distance = Vector2.Distance((Vector2)transform.position, (Vector2)path.vectorPath[currentWaypoint]);
 
         if (distance < nextWaypointDistance)
         {

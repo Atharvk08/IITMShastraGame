@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerTorchLight
   - Enemy
+  - Spikes
   layers:
   - Default
   - TransparentFX
