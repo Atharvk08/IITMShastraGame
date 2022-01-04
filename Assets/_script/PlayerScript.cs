@@ -31,7 +31,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Tilemap groundTimeMap;
     [SerializeField] private Tilemap wallTileMap;
 
-    
     void Start()
     {
         endPosition = transform.position;
@@ -63,13 +62,15 @@ public class PlayerScript : MonoBehaviour
         playerMove();
         torchActive();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Spikes"))
         {
-            Destroy(gameObject);
+            Instantiate(blood, transform.position, Quaternion.identity);
+            //Destroy(gameObject);
         }
     }
+    */
     private void torchActive()
     {
         if (Input.GetKeyDown(KeyCode.Space))

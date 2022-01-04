@@ -8,11 +8,19 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]private PlayerScript playerScript;
     private bool playerDetected;
     [SerializeField] private bool canMove;
+
+    [SerializeField] private GameObject whiteEyes;
+
+   // [SerializeField] private GameObject blood;
+    Animator enemyAnimator;
     private void Start()
     {
         aipath = GetComponent<AIPath>();
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        enemyAnimator = GetComponent<Animator>();
+        whiteEyes.SetActive(true);
 
+        //enemyAnimator.SetBool("isAwake", false);
         aipath.canMove = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,7 +32,8 @@ public class EnemyScript : MonoBehaviour
         }
         if (collision.CompareTag("Spikes"))
         {
-            Destroy(gameObject);
+            //Instantiate(blood, transform.position, Quaternion.identity);
+            //Destroy(gameObject);
             Debug.Log("enemy detsoref");
         }
     }
@@ -35,12 +44,18 @@ public class EnemyScript : MonoBehaviour
         if (canMove)
         {
             aipath.canMove = true;
-            Debug.Log(canMove);
+            enemyAnimator.SetBool("isRunning", true);
+            //enemyAnimator.SetBool("isAwake", true);
+            whiteEyes.SetActive(false);
         }
         else
         {
             aipath.canMove = false;
+            enemyAnimator.SetBool("isRunning", false);
+            //enemyAnimator.SetBool("isAwake", false);
+            whiteEyes.SetActive(true);
         }
+
     }
 
     void Flip()
@@ -63,9 +78,5 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-
-    }
     
 }

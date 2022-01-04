@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76a1625dc5fd324aa94415823133e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spiderKillSprite: {fileID: 21300000, guid: 4f58756e7de17404ea1116804d947bb2, type: 3}
+  playerBlood: {fileID: 3398361601368418072, guid: 74cbe3d3a7d202743a4caef1e4c5bca1, type: 3}
+  enemyBlood: {fileID: 7246258849566839924, guid: 60428a672ad195542805a6e3fd9a7ba5, type: 3}
+  lifetime: 0
 --- !u!212 &7786661691953058767
 SpriteRenderer:
   m_ObjectHideFlags: 0
