@@ -36,6 +36,8 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private GameObject laternGFX;
     [SerializeField] private float laternDistance = 1f;
+
+    [SerializeField] private GameObject fireComponent;
     void Start()
     {
         endPosition = transform.position;
@@ -79,9 +81,14 @@ public class PlayerScript : MonoBehaviour
             torch.SetActive(!torch.activeSelf);
             torchEnabled = torch.activeSelf;
             Debug.Log("troch active status:" + torchEnabled);
+            if (!torch.activeSelf)
+            {
+                fireComponent.SetActive(false);
+            }
 
             if (torchEnabled)
             {
+                fireComponent.SetActive(true);
                 torchDirection = Direction.centre;
                 torchLight.transform.localPosition = new Vector3(0f, 0f, 0f);
                 fireAnimator.Play("FireLit");

@@ -508,6 +508,7 @@ MonoBehaviour:
   wallTileMap: {fileID: 0}
   laternGFX: {fileID: 8384480830884940096}
   laternDistance: 2
+  fireComponent: {fileID: 5580264688178751982}
 --- !u!61 &7549142140881789520
 BoxCollider2D:
   m_ObjectHideFlags: 0
