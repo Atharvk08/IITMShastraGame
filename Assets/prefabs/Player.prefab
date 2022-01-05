@@ -274,6 +274,8 @@ GameObject:
   - component: {fileID: 7549142140881789487}
   - component: {fileID: 7549142140881789486}
   - component: {fileID: 7549142140881789520}
+  - component: {fileID: 4994254938289401088}
+  - component: {fileID: 4688875020643618639}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -317,7 +319,6 @@ MonoBehaviour:
   camera: {fileID: 0}
   groundTimeMap: {fileID: 0}
   wallTileMap: {fileID: 0}
-  blood: {fileID: 3398361601368418072, guid: 74cbe3d3a7d202743a4caef1e4c5bca1, type: 3}
 --- !u!61 &7549142140881789520
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -344,6 +345,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 7}
   m_EdgeRadius: 0
+--- !u!50 &4994254938289401088
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549142140881789484}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!95 &4688875020643618639
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7549142140881789484}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 182ba6e61fb57784886748d1a24f7cd6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7549142141394245917
 GameObject:
   m_ObjectHideFlags: 0

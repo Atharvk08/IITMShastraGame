@@ -20,6 +20,9 @@ public class EnemyAI : MonoBehaviour
     Rigidbody2D rb;
 
     Vector3 direction;
+
+    private bool enemyKilled;
+    void setEnemyKilled(bool flag) { enemyKilled=flag;}
     private void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -27,7 +30,7 @@ public class EnemyAI : MonoBehaviour
         InvokeRepeating("UpdatePath", 0f, .5f);
 
         playerDetected = false;
-        
+        enemyKilled = false;
     }
 
     void OnPathComplete(Path p)

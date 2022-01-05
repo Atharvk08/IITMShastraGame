@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     private bool moveToPoint = false;
     private Vector3 endPosition;
 
+    private Animator anim;
     //tilemaps
     [SerializeField] private Tilemap groundTimeMap;
     [SerializeField] private Tilemap wallTileMap;
@@ -43,6 +44,8 @@ public class PlayerScript : MonoBehaviour
 
         Debug.Log("torch direction : " + torchDirection);
         torchEnabled = true;
+
+        anim = GetComponent<Animator>();
     }
 
 
@@ -62,15 +65,8 @@ public class PlayerScript : MonoBehaviour
         playerMove();
         torchActive();
     }
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Spikes"))
-        {
-            Instantiate(blood, transform.position, Quaternion.identity);
-            //Destroy(gameObject);
-        }
-    }
-    */
+    
+
     private void torchActive()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -117,11 +113,15 @@ public class PlayerScript : MonoBehaviour
                         torchDirection = Direction.left;
                         torchLight.transform.localPosition = new Vector3(-distanceToMove,0f,0f);
                     }//player moving in left direction
-                    else
+                    else if(torchDirection==Direction.left || torchEnabled)
                     {
                         endPosition = playerDirection;
                         moveToPoint = true;
                     }
+                    anim.SetBool("left", true);
+                    anim.SetBool("up", false);
+                    anim.SetBool("down", false);
+                    anim.SetBool("right", false);
                 }
             }
             if (Input.GetKeyDown(KeyCode.D)) //Right
@@ -134,11 +134,15 @@ public class PlayerScript : MonoBehaviour
                         torchDirection = Direction.right;
                         torchLight.transform.localPosition = new Vector3(distanceToMove, 0f, 0f);
                     }
-                    else//player moving in rigth direction
+                    else if (torchDirection == Direction.right || torchEnabled)//player moving in rigth direction
                     {
                         endPosition = playerDirection;
                         moveToPoint = true;
                     }
+                    anim.SetBool("left", false);
+                    anim.SetBool("up", false);
+                    anim.SetBool("down", false);
+                    anim.SetBool("right", true);
                 }
             }
             if (Input.GetKeyDown(KeyCode.W))//Up
@@ -151,11 +155,15 @@ public class PlayerScript : MonoBehaviour
                         torchDirection = Direction.up;
                         torchLight.transform.localPosition = new Vector3(0f,distanceToMove,  0f);
                     }
-                    else
+                    else if (torchDirection == Direction.up || torchEnabled)
                     {
                         endPosition = playerDirection;
                         moveToPoint = true;
                     }
+                    anim.SetBool("left", false);
+                    anim.SetBool("up", true);
+                    anim.SetBool("down", false);
+                    anim.SetBool("right", false);
                 }
             }
             if (Input.GetKeyDown(KeyCode.S)) //Down
@@ -168,11 +176,15 @@ public class PlayerScript : MonoBehaviour
                         torchDirection = Direction.down;
                         torchLight.transform.localPosition = new Vector3(0f, -distanceToMove, 0f);
                     }
-                    else
+                    else if (torchDirection == Direction.down || torchEnabled)
                     {
                         endPosition = playerDirection;
                         moveToPoint = true;
                     }
+                    anim.SetBool("left", false);
+                    anim.SetBool("up", false);
+                    anim.SetBool("down", true);
+                    anim.SetBool("right", false);
                 }
             }
 

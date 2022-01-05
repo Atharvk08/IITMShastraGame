@@ -56,3 +56,6 @@ TagManager:
   - name: OtherObjects
     uniqueID: 4233686467
     locked: 0
+  - name: Eyes
+    uniqueID: 4240514163
+    locked: 0

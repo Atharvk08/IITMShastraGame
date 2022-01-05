@@ -7,7 +7,16 @@ public class SpikeTileScript : MonoBehaviour
     
     [SerializeField] private GameObject playerBlood;
     [SerializeField] private GameObject enemyBlood;
+    [SerializeField] private GameObject playerGFX;
+    [SerializeField] private GameObject spiderGFX;
+
+    Animator spikeAnim;
     public float lifetime = 2f;
+
+    private void Start()
+    {
+        spikeAnim = GetComponent<Animator>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -25,15 +34,16 @@ public class SpikeTileScript : MonoBehaviour
     {
         Instantiate(playerBlood, other.transform.position, Quaternion.identity);
         //StartCoroutine("waitTimeToDestroy", other);
-        Destroy(other);
+        Destroy(playerGFX);
         Debug.Log("player destroyed");
     }
     void DestroyEnemy(GameObject enemy)
     {
         Instantiate(enemyBlood, enemy.transform.position, Quaternion.identity);
         //StartCoroutine("waitTimeToDestroy", enemy);
-        Destroy(enemy);
+        spiderGFX.SetActive(false);
         SpriteRenderer rend = gameObject.GetComponent<SpriteRenderer>();
+        spikeAnim.enabled = false;
         rend.sprite = spiderKillSprite;
 
         Debug.Log("enemy destroyed");

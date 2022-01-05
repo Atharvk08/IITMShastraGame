@@ -5,8 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]private GameObject player;
-    private PlayerScript playerScript;
-
+    private PlayerScript playerScript;   
     private void Start()
     {
         playerScript = player.GetComponent<PlayerScript>();
@@ -14,9 +13,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            
-        }
+        
+    }
+    void isEnemyKilled()
+    {
+
     }
 }

@@ -49,7 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spiderKillSprite: {fileID: 21300000, guid: 4f58756e7de17404ea1116804d947bb2, type: 3}
   playerBlood: {fileID: 3398361601368418072, guid: 74cbe3d3a7d202743a4caef1e4c5bca1, type: 3}
-  enemyBlood: {fileID: 7246258849566839924, guid: 60428a672ad195542805a6e3fd9a7ba5, type: 3}
+  enemyBlood: {fileID: 0}
+  playerGFX: {fileID: 0}
+  spiderGFX: {fileID: 0}
   lifetime: 0
 --- !u!212 &7786661691953058767
 SpriteRenderer:
@@ -134,7 +136,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.029937267, y: -0.39568436}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -145,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 6}
+  m_Size: {x: 5.150175, y: 4.707328}
   m_EdgeRadius: 0
 --- !u!50 &1931052467
 Rigidbody2D:
