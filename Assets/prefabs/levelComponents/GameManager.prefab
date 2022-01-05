@@ -43,4 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd72576b2fc5a0468792306bdf53130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 7549142140881789484, guid: a82dd11e6ff52f3468fef27e6f3d3fc7, type: 3}
+  winTile: {fileID: 737137821798509835, guid: 8c71026aa95314146a3983a603c5e805, type: 3}

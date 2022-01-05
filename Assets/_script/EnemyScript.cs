@@ -60,7 +60,8 @@ public class EnemyScript : MonoBehaviour
 
     public void RestartMenu()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        new WaitForSeconds(2f);
         restartMenu.SetActive(true);
     }
 

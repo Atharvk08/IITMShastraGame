@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]private GameObject player;
-    private PlayerScript playerScript;   
+    private PlayerScript playerScript;
+
+    public WinTileScript winTile;
     private void Start()
     {
         playerScript = player.GetComponent<PlayerScript>();
@@ -13,7 +15,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if (winTile.playerReachedWinTile)
+        {
+            //Next Level
+        }
     }
     
 }

@@ -7,6 +7,7 @@ TagManager:
   - PlayerTorchLight
   - Enemy
   - Spikes
+  - WinTile
   layers:
   - Default
   - TransparentFX
