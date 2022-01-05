@@ -52,6 +52,7 @@ MonoBehaviour:
   enemyBlood: {fileID: 0}
   playerGFX: {fileID: 0}
   spiderGFX: {fileID: 0}
+  restartMenu: {fileID: 0}
   lifetime: 0
 --- !u!212 &7786661691953058767
 SpriteRenderer:

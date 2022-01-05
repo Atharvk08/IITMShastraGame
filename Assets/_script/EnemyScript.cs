@@ -15,6 +15,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private GameObject blood;
 
     [SerializeField] private GameObject spiderEyesLights;
+
+    [SerializeField] private GameObject restartMenu;
     Animator enemyAnimator;
     private void Start()
     {
@@ -52,7 +54,14 @@ public class EnemyScript : MonoBehaviour
             collision.gameObject.transform.Find("playerGFX").gameObject.SetActive(false);
             Instantiate(blood, collision.transform.position, Quaternion.identity);
             canMove = false;
+            RestartMenu();
         }
+    }
+
+    public void RestartMenu()
+    {
+        Time.timeScale = 0;
+        restartMenu.SetActive(true);
     }
 
     void FixedUpdate()

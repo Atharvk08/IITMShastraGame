@@ -9,7 +9,7 @@ public class SpikeTileScript : MonoBehaviour
     [SerializeField] private GameObject enemyBlood;
     [SerializeField] private GameObject playerGFX;
     [SerializeField] private GameObject spiderGFX;
-
+    [SerializeField] private GameObject restartMenu;
     Animator spikeAnim;
     public float lifetime = 2f;
 
@@ -36,6 +36,7 @@ public class SpikeTileScript : MonoBehaviour
         //StartCoroutine("waitTimeToDestroy", other);
         Destroy(playerGFX);
         Debug.Log("player destroyed");
+        RestartMenu();
     }
     void DestroyEnemy(GameObject enemy)
     {
@@ -53,5 +54,10 @@ public class SpikeTileScript : MonoBehaviour
     {
         yield return new WaitForSeconds(lifetime);
         Destroy(other);
+    }
+    public void RestartMenu()
+    {
+        Time.timeScale = 0;
+        restartMenu.SetActive(true);
     }
 }

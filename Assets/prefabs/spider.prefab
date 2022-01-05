@@ -978,7 +978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  target: {fileID: 7549142140881789487, guid: a82dd11e6ff52f3468fef27e6f3d3fc7, type: 3}
+  target: {fileID: 0}
 --- !u!61 &2817138735862729956
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1023,6 +1023,7 @@ MonoBehaviour:
   spiderBlood: {fileID: 6252109424116295380, guid: 8d17f5d703c7f5f449f6955cc11ee232, type: 3}
   blood: {fileID: 3398361601368418072, guid: 74cbe3d3a7d202743a4caef1e4c5bca1, type: 3}
   spiderEyesLights: {fileID: 1014934122822928783}
+  restartMenu: {fileID: 0}
 --- !u!95 &1634638772808418191
 Animator:
   serializedVersion: 3

@@ -28,10 +28,14 @@ public class PlayerScript : MonoBehaviour
     private Vector3 endPosition;
 
     private Animator anim;
+    [SerializeField] private Animator fireAnimator;
     //tilemaps
     [SerializeField] private Tilemap groundTimeMap;
     [SerializeField] private Tilemap wallTileMap;
 
+
+    [SerializeField] private GameObject laternGFX;
+    [SerializeField] private float laternDistance = 1f;
     void Start()
     {
         endPosition = transform.position;
@@ -46,6 +50,7 @@ public class PlayerScript : MonoBehaviour
         torchEnabled = true;
 
         anim = GetComponent<Animator>();
+        fireAnimator.SetBool("burning", true);
     }
 
 
@@ -79,6 +84,8 @@ public class PlayerScript : MonoBehaviour
             {
                 torchDirection = Direction.centre;
                 torchLight.transform.localPosition = new Vector3(0f, 0f, 0f);
+                fireAnimator.Play("FireLit");
+                laternGFX.transform.localPosition = new Vector3(0f, 0f, 0f);
             }
         }
     }
@@ -112,6 +119,7 @@ public class PlayerScript : MonoBehaviour
                     {
                         torchDirection = Direction.left;
                         torchLight.transform.localPosition = new Vector3(-distanceToMove,0f,0f);
+                        laternGFX.transform.localPosition = new Vector3(-laternDistance, 0f, 0f);
                     }//player moving in left direction
                     else if(torchDirection==Direction.left || torchEnabled)
                     {
@@ -133,6 +141,7 @@ public class PlayerScript : MonoBehaviour
                     {
                         torchDirection = Direction.right;
                         torchLight.transform.localPosition = new Vector3(distanceToMove, 0f, 0f);
+                        laternGFX.transform.localPosition = new Vector3(laternDistance, 0f, 0f);
                     }
                     else if (torchDirection == Direction.right || torchEnabled)//player moving in rigth direction
                     {
@@ -154,6 +163,7 @@ public class PlayerScript : MonoBehaviour
                     {
                         torchDirection = Direction.up;
                         torchLight.transform.localPosition = new Vector3(0f,distanceToMove,  0f);
+                        laternGFX.transform.localPosition = new Vector3(0f,0f,  0f);
                     }
                     else if (torchDirection == Direction.up || torchEnabled)
                     {
@@ -175,6 +185,7 @@ public class PlayerScript : MonoBehaviour
                     {
                         torchDirection = Direction.down;
                         torchLight.transform.localPosition = new Vector3(0f, -distanceToMove, 0f);
+                        laternGFX.transform.localPosition = new Vector3(0f,-laternDistance, 0f);
                     }
                     else if (torchDirection == Direction.down || torchEnabled)
                     {
@@ -187,6 +198,7 @@ public class PlayerScript : MonoBehaviour
                     anim.SetBool("right", false);
                 }
             }
+
 
         }
     }

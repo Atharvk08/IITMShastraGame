@@ -15,8 +15,5 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    void isEnemyKilled()
-    {
-
-    }
+    
 }
