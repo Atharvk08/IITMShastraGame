@@ -2,8 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class UIScript : MonoBehaviour
 {
+    
+
+    public void FadeText(Animator anim)
+    {
+        anim.SetBool("Fade", true);
+        new WaitForSeconds(.1f);
+        anim.SetBool("Fade", false);
+    }
     public void TimeStopped()
     {
         Time.timeScale = 0;
@@ -28,7 +37,6 @@ public class UIScript : MonoBehaviour
         }
 
     }
-
     public void QuitGame()
     {
         Debug.Log("Game Quit!!!");
