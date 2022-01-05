@@ -38,6 +38,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float laternDistance = 1f;
 
     [SerializeField] private GameObject fireComponent;
+
+    [SerializeField] private AudioSource walkAudio;
     void Start()
     {
         endPosition = transform.position;
@@ -130,6 +132,7 @@ public class PlayerScript : MonoBehaviour
                     }//player moving in left direction
                     else if(torchDirection==Direction.left || torchEnabled)
                     {
+                        walkAudio.Play();
                         endPosition = playerDirection;
                         moveToPoint = true;
                     }
@@ -152,6 +155,7 @@ public class PlayerScript : MonoBehaviour
                     }
                     else if (torchDirection == Direction.right || torchEnabled)//player moving in rigth direction
                     {
+                        walkAudio.Play();
                         endPosition = playerDirection;
                         moveToPoint = true;
                     }
@@ -174,6 +178,7 @@ public class PlayerScript : MonoBehaviour
                     }
                     else if (torchDirection == Direction.up || torchEnabled)
                     {
+                        walkAudio.Play();
                         endPosition = playerDirection;
                         moveToPoint = true;
                     }
@@ -196,6 +201,7 @@ public class PlayerScript : MonoBehaviour
                     }
                     else if (torchDirection == Direction.down || torchEnabled)
                     {
+                        walkAudio.Play();
                         endPosition = playerDirection;
                         moveToPoint = true;
                     }

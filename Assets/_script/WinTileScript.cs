@@ -5,6 +5,7 @@ using UnityEngine;
 public class WinTileScript : MonoBehaviour
 {
     public bool playerReachedWinTile;
+    public GameObject youWinPanel;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class WinTileScript : MonoBehaviour
         {
             Debug.Log("Player Wins");
             playerReachedWinTile = true;
+            youWinPanel.SetActive(true);
         }
     }
 }

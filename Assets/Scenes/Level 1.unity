@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -447,6 +448,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &519420033
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9e650964843bc344cb1f055f2137a01b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1839735485 &579873615 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 2744406342092949138, guid: d34447e1628b30542a6a4e35a4c2a69c, type: 3}
@@ -578,18 +675,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 59067702}
     m_Modifications:
-    - target: {fileID: 6146593608535858035, guid: 8c71026aa95314146a3983a603c5e805, type: 3}
-      propertyPath: playerGFX
+    - target: {fileID: 737137821798509835, guid: 8c71026aa95314146a3983a603c5e805, type: 3}
+      propertyPath: youWinPanel
       value: 
-      objectReference: {fileID: 1481135839}
-    - target: {fileID: 6146593608535858035, guid: 8c71026aa95314146a3983a603c5e805, type: 3}
-      propertyPath: spiderGFX
-      value: 
-      objectReference: {fileID: 1585827033}
-    - target: {fileID: 6146593608535858035, guid: 8c71026aa95314146a3983a603c5e805, type: 3}
-      propertyPath: restartMenu
-      value: 
-      objectReference: {fileID: 2532836187213909851}
+      objectReference: {fileID: 2532836187213909852}
     - target: {fileID: 7084454762290253282, guid: 8c71026aa95314146a3983a603c5e805, type: 3}
       propertyPath: m_Name
       value: WinTile
@@ -750,7 +839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1526308852805642542, guid: d470029dd9a54e049842eb550e20757a, type: 3}
       propertyPath: data.dataString
-      value: UEsDBBQAAAgIAMArIezXkIZRXAIAABQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk0HU0igtxYS0gMJE9rJxZdFWmMNsuSR5ADJ8N+7km3sMJMTy9u3u28/5A8mtSuRe2OXVoqVEch+Dliw2bdB53zEI+yM3sh3bDmvUvg8kCByXsBLQ3gSwpwp0FvJf+mdCuQhgZWWmbHFvdjh3DjvCM5AOSSXNT5Ea4I+BuxIPzezEHIia3QXrHeyZsPBmUyO2qPtqC2xpdWsSnMFRYkiSO7IyW1Ln9Y8Td00lCS4uFFKukYL86cy9ropc7QYmhUSqLVYf/h9SkCOcpf7ILQf/ZxlDn2jysJpIS3NqE7Lfpt6cAW4fS3tDVQVCk2SUVRVJ1196c+sKR7bwskwFPG55PsXOHFwvjfaPrzotCdxRAdQe9gqfM1RP5mlNZUW5PS2CqGVw9Gi+3vpbZ4j33d4rfUKrMqvF3STDM7n2P5xrmSxjaMc18BGmTjxuH60tJw/JDgeh2tSEBpU/HP4F3b9K2ocD9I6T66mSx3kbU1lA5U9kBFGzys/N1ZjRBvNJWpQ/rSmLP56hVe+XtUrzwOE59LUbnztK7gKiXDHHw6vXGtzuOzK5eawQpc/V15JjZ3o4HiiMc2N1vWFuc/OELWpbAa8F7WrpPh8WYxPRrO7WZbMfiQwnoxv6QVOt2MhkukIACGZsXh5UlOboNa1zmY6tDPdJdd0Ze1HZLC0UMZjFxYOS/lemJ4+qTOz4RZRP9cZ2gk5tFSEnqW4F5Lms0HvpY7bZh8pU4bvUaSXRGns9P7oLaRdlpSV8s34gKRsHr8aKQvw5ZLXFt8kHkLxNtmZnf8DUEsDBBQAAAgIAMArIeyuQR21bQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSsqmRpbllmqGlsWGiiamJma6lgUWSSUqKoYVRYmJqoqGlUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAMArIezXkIZRXAIAABQFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAMArIeyuQR21bQAAAHgAAAAJACQAAAAAAAAAAAAAAKkCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAYQMAAAAA
+      value: UEsDBBQAAAgIAMArIeyc3ehzXAIAABUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk0HU5JAby1JSA8JTGgnF18WaY01yJJHksPX8N+7km3sMJMT4r23q7cf8olJ7Urk3ti5leLFCGQ/Byyc2bdBRz7jHjZGr+QRW827FD4PIoiaN/DSEJ6EMGcK9FbyX3qjgnhIYKVlZmzxKDY4M847gjNQDomyxodoTdBpwPb0czMNIQc6je7D6Uin6XBwpiNH7dF20lbYympVpbmCokQRLHfi5K6VJ8NaqKmcRpMEjhulpGvMMH8oY7GrMkeLoVohgWqLBobfJwTkKDe5D0770Yssc+gbWxYOD9JSk+q07LepO1eA29bePkBV4aLbZBRd1UlfvuQza4rn9mIqhSCfS759gwMH53u97cMPnfck9mgHagtrhe856lczt6bSgkhvqxBaORw9dH8vtc1y5NsOr71egVX59YRuksH5HMvfz5Qs1rGV4xpYKRM7HuePlobzhwzH7XBNCkKDi38O/8Kmv0YN8SSt80Q1Vepgb20qG6TsiQ6h9bzyM2M1RrTxXKIG5Q9LyuKvR3jF9W69Yp4gvJfm7oZrn8FVSIQ7/XB4RS3N7jIrl5vdC7p8UXklNXamA/FKbZoZresNc5/JELWqbAa8F7WppPi8WYzfjqb30yyZ/khgfDu+oyc4WY+FSCYjAIRkyuLmSU1lglrWPpvu0Mx0l1zTlrVfkcHcQhmXXVjYzeWxMD1/UmdmxS2iXtQZ2g45tHQJPUvxKCT1Z4XeSx2nzU4pU4ZvUaSXRGms9HHvLaRdlpSV8sP4gKRsFj8bKQvwZZOXFj8k7sLlbbIzO/8HUEsDBBQAAAgIAMArIeyuQR21bQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSsqmRpbllmqGlsWGiiamJma6lgUWSSUqKoYVRYmJqoqGlUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAMArIeyc3ehzXAIAABUFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAMArIeyuQR21bQAAAHgAAAAJACQAAAAAAAAAAAAAAKkCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAYQMAAAAA
       objectReference: {fileID: 0}
     - target: {fileID: 1526308852805642543, guid: d470029dd9a54e049842eb550e20757a, type: 3}
       propertyPath: m_Name
@@ -818,6 +907,11 @@ PrefabInstance:
 --- !u!1 &2532836187213909851 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4645546361644002719, guid: 240e6c0326ca4b6438f66b7885ff0015, type: 3}
+  m_PrefabInstance: {fileID: 2532836187213909850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2532836187213909852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 80757145299110688, guid: 240e6c0326ca4b6438f66b7885ff0015, type: 3}
   m_PrefabInstance: {fileID: 2532836187213909850}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2744406342588935645

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]private GameObject player;
     private PlayerScript playerScript;
 
+    [SerializeField] private GameObject LevelChangerObj;
     public WinTileScript winTile;
     private void Start()
     {
@@ -18,9 +19,18 @@ public class GameManager : MonoBehaviour
         if (winTile.playerReachedWinTile)
         {
             //Next Level
-            PlayerPrefs.SetString("Level"+ SceneManager.GetActiveScene().buildIndex.ToString(),"true");
+            nextLevel();
+            return;
         }
+        
     }
+
+    public void nextLevel()
+    {
+        PlayerPrefs.SetString("Level" + SceneManager.GetActiveScene().buildIndex.ToString(), "true");
+       // LevelChangerObj.GetComponent<LevelChangerScript>().FadeToLevel(2);
+    }
+
     public void LoadLevel(int sceneIndex)
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));

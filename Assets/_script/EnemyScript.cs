@@ -18,6 +18,9 @@ public class EnemyScript : MonoBehaviour
 
     [SerializeField] private GameObject restartMenu;
     Animator enemyAnimator;
+
+    public GameObject eyes1;
+    public GameObject eyes2;
     private void Start()
     {
         aipath = GetComponent<AIPath>();
@@ -27,6 +30,8 @@ public class EnemyScript : MonoBehaviour
 
        // spiderEyesLights.SetActive(false);
         aipath.canMove = false;
+        eyes1.SetActive(false);
+        eyes2.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,7 +39,9 @@ public class EnemyScript : MonoBehaviour
         {
             playerDetected = true;
             Debug.Log("target spotted");
-           // spiderEyesLights.SetActive(true);
+            // spiderEyesLights.SetActive(true);
+            eyes1.SetActive(true);
+            eyes2.SetActive(true);
         }
         if (collision.CompareTag("Spikes"))
         {
