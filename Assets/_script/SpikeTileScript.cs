@@ -36,7 +36,7 @@ public class SpikeTileScript : MonoBehaviour
         //StartCoroutine("waitTimeToDestroy", other);
         Destroy(playerGFX);
         Debug.Log("player destroyed");
-        RestartMenu();
+        RestartMenu(other);
     }
     void DestroyEnemy(GameObject enemy)
     {
@@ -52,13 +52,12 @@ public class SpikeTileScript : MonoBehaviour
 
     IEnumerator waitTimeToDestroy(GameObject other)
     {
-        yield return new WaitForSeconds(lifetime);
+        yield return new WaitForSecondsRealtime(.45f);
+        restartMenu.SetActive(true);
         Destroy(other);
     }
-    public void RestartMenu()
+    public void RestartMenu(GameObject other)
     {
-        //Time.timeScale = 0;
-        new WaitForSeconds(2f);
-        restartMenu.SetActive(true);
+        StartCoroutine(waitTimeToDestroy(other));
     }
 }

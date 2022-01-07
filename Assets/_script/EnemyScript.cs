@@ -21,6 +21,8 @@ public class EnemyScript : MonoBehaviour
 
     public GameObject eyes1;
     public GameObject eyes2;
+
+    [SerializeField] private float spiderStartTime=5f;
     private void Start()
     {
         aipath = GetComponent<AIPath>();
@@ -59,16 +61,17 @@ public class EnemyScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.Find("playerGFX").gameObject.SetActive(false);
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
             Instantiate(blood, collision.transform.position, Quaternion.identity);
             canMove = false;
-            RestartMenu();
+            RestartMenu(collision.gameObject);
         }
     }
 
     public void RestartMenu()
     {
         //Time.timeScale = 0;
-        new WaitForSeconds(2f);
+        new WaitForSecondsRealtime(.45f);
         restartMenu.SetActive(true);
     }
 
@@ -78,8 +81,9 @@ public class EnemyScript : MonoBehaviour
         canMove = playerScript.getTorchEnabled() && playerDetected;
         if (canMove)
         {
-            aipath.canMove = true;
             enemyAnimator.SetBool("isRunning", true);
+            new WaitForSecondsRealtime(spiderStartTime);
+            aipath.canMove = true;
             //enemyAnimator.SetBool("isAwake", true);
             whiteEyes.SetActive(false);
         }
@@ -92,7 +96,16 @@ public class EnemyScript : MonoBehaviour
         }
 
     }
-
+    IEnumerator waitTimeToDestroy(GameObject other)
+    {
+        yield return new WaitForSecondsRealtime(.45f);
+        restartMenu.SetActive(true);
+        Destroy(other);
+    }
+    public void RestartMenu(GameObject other)
+    {
+        StartCoroutine(waitTimeToDestroy(other));
+    }
     void Flip()
     {
         if (aipath.desiredVelocity.x >= 0.01f)

@@ -455,12 +455,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9e650964843bc344cb1f055f2137a01b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.711
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -854,6 +854,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 452660357}
     m_Modifications:
+    - target: {fileID: 80757145299110688, guid: 240e6c0326ca4b6438f66b7885ff0015, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2532836186491207620, guid: 240e6c0326ca4b6438f66b7885ff0015, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -901,6 +905,22 @@ PrefabInstance:
     - target: {fileID: 2532836186491207621, guid: 240e6c0326ca4b6438f66b7885ff0015, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2532836187093301841, guid: 240e6c0326ca4b6438f66b7885ff0015, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2532836187428383629, guid: 240e6c0326ca4b6438f66b7885ff0015, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645546361644002719, guid: 240e6c0326ca4b6438f66b7885ff0015, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9130689589059868481, guid: 240e6c0326ca4b6438f66b7885ff0015, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 240e6c0326ca4b6438f66b7885ff0015, type: 3}
